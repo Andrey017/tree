@@ -56,11 +56,6 @@ int main(int argc, char *argv[])
         statistics(tree);
         maxdepth = maximaldepth(tree, 0);
         isheap = fisheap(tree, 0);
-        //checkprint(tree, 0);
-        //printf("Numbers of nodes: %d. \nNumbers of internal nodes: %d.\nNumber of leaves: %d.Maximal depth of tree: %d.\n", nodesnum,internalnum, leavesum, maxdepth);
-        //if (isheap) printf("The tree is not binary heap\n");
-        //else printf("The tree is binary heap\n");
-        printf("Enter command: \n");
         scanf("%s", command);
 
         if (!strcmp(command, "add")){
@@ -255,7 +250,7 @@ int main(int argc, char *argv[])
 
         else if (!strcmp(command, "show")){
             checkprint(tree, 0);
-            printf("Numbers of nodes: %d. \nNumbers of internal nodes: %d.\nNumber of leaves: %d.Maximal depth of tree: %d.\n", nodesnum,internalnum, leavesum, maxdepth);
+            printf("Numbers of nodes: %d. \nNumbers of internal nodes: %d.\nNumber of leaves: %d.\nMaximal depth of tree: %d.\n", nodesnum,internalnum, leavesum, maxdepth);
 
         }
         else if (!strcmp(command, "exit"))
