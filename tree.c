@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+/*Tree structure*/
 typedef struct node{
     struct node *parent;
     struct node *right;
@@ -37,6 +38,7 @@ int main(int argc, char *argv[])
     FILE *file = 0;
     char command[500],flag = 8, *c=0;
 
+    /*Open file while downloading*/
     if (argc > 1){
         if ((file = fopen(argv[1], "rb")) == 0)
             printf("Error opening\n");
@@ -51,6 +53,7 @@ int main(int argc, char *argv[])
     else
         printf("No tree was loaded from command line arguments\n");
 
+    /*Work with teams*/
     while (flag){
         leavesum = internalnum = nodesnum = maxdepth = 0;
         statistics(tree);
@@ -377,6 +380,7 @@ int removeelement(node *tree, int numtos, char typedel){
     return tmp;
 }
 
+/*Delete tree*/
 void removetree(node *tree){
     if (!tree) return;
     if (tree->left)
@@ -386,6 +390,7 @@ void removetree(node *tree){
     free(tree);
 }
 
+/*Load tree*/
 void loadnode(node *tree, FILE *file){
     int targetn, number;
     if (!fread(&targetn, sizeof(int), 1, file)) return;
@@ -394,6 +399,7 @@ void loadnode(node *tree, FILE *file){
     loadnode(tree, file);
 }
 
+/*Write command in file(Save tree)*/
 void writenode(node *tree, FILE *file){
     if (tree->parent){
         fwrite(&tree->parent->number, sizeof(int), 1, file);
@@ -471,6 +477,7 @@ void statistics(node *tree){
     }
 }
 
+/*Creat root*/
 node* createroot(int number){
     node *temp;
     temp = (node*)malloc(sizeof(node));
@@ -479,6 +486,7 @@ node* createroot(int number){
     return temp;
 }
 
+/*Create node for tree*/
 int addnode(int number, node *current, int target, char type, int launchflag){
     static int flag;
     int ntmp = 0;
